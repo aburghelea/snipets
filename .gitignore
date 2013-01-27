@@ -31,3 +31,5 @@ build.log
 
 atlassian-ide-plugin.xml
 spring-training/atlassian-ide-plugin.xml
+*.exe
+*.o
