@@ -1,7 +1,6 @@
 package learning.ctci.ArraysAndStrings;
 
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -14,8 +13,17 @@ public abstract class UniqueCharsAbstract {
 
     abstract void check(String characters, boolean expected);
 
+    @Before
+    public void setUp() throws Exception {
+        uniqueChars = new UniqueChars();
+    }
 
-        @Test
+    @After
+    public void tearDown() throws Exception {
+        uniqueChars = null;
+    }
+
+    @Test
     public void testIfNullStringHasUniqueCharacts() throws Exception {
         check("", true);
     }
