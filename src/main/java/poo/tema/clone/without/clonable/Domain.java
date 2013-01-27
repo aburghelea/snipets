@@ -16,7 +16,7 @@ public class Domain implements Serializable {
         this.national = national;
     }
 
-//    @Override
+    //    @Override
     protected Domain clone() throws CloneNotSupportedException {
         return new Domain(name, national);
     }

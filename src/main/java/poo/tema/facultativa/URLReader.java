@@ -26,7 +26,7 @@ public class URLReader {
         URLReader urlReader = new URLReader();
         List<String> lines = urlReader.start("buff");
 
-        for (String line : lines){
+        for (String line : lines) {
             System.out.println(line);
         }
     }
@@ -34,10 +34,11 @@ public class URLReader {
     /**
      * Aduce toate liniile din XML-ul TvRage care cauta
      * shourile dupa nume.
+     *
      * @param show Numele shoului cautat
      * @return O lista de linii.
      */
-    private List<String>  start(String show) {
+    private List<String> start(String show) {
         List<String> lines = null;
         try {
             URL showURL = new URL(String.format(SEARCH_TEMPLATE, show));
@@ -56,6 +57,7 @@ public class URLReader {
 
     /**
      * Intoarce liniile pe care le poate citi de la o conexiune deja stabilita
+     *
      * @param connection Conexiunea Http
      * @return Lista de stringuri. Fiecare string reprezinta o linie.
      * @throws IOException daca ne poate optine fluxul de intrare de la conexiune

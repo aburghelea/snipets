@@ -1,3 +1,5 @@
+package learning;
+
 /*
  * The Knuth-Morris-Pratt Algorithm for Pattern Matching
  */
