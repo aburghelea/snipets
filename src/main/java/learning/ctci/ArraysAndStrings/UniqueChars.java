@@ -47,7 +47,7 @@ public class UniqueChars {
             found = false;
 
             for (int j = sb.length() - 1; j >= 0; j--) {
-                if (sb.charAt(j) == currentChar){
+                if (sb.charAt(j) == currentChar) {
                     found = true;
                     break;
                 }
@@ -59,6 +59,30 @@ public class UniqueChars {
         return sb.toString();
     }
 
+    public char[] removeDuplicatesWithoutAditionalBuffer(char[] original) {
+        int last = 1, size = original.length;
+        boolean found;
+        char currentChar;
+        if (size <= 1)
+            return original;
 
+        for (int i = 1; i < size; i++) {
+            found = false;
+            currentChar = original[i];
+            for (int j = 0 ; j < last; j++){
+                if (original[j] == currentChar){
+                    found = true;
+                    break;
+                }
+            }
+            if (!found){
+                original[last] = currentChar;
+                last++;
+            }
+        }
+
+
+        return new String(original).substring(0, last).toCharArray();
+    }
 
 }
