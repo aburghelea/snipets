@@ -7,26 +7,7 @@ import java.util.HashSet;
  * @since 1/28/13 - 2:44 PM
  */
 
-class LinkedListNode<E> {
-    E data;
-    LinkedListNode<E> next;
-
-    LinkedListNode(E data) {
-        this.data = data;
-    }
-
-    public LinkedListNode(E data, LinkedListNode<E> next) {
-        this.data = data;
-        this.next = next;
-    }
-
-    @Override
-    public String toString() {
-        return data.toString();
-    }
-}
-
-class LinkedList<E> {
+public class LinkedList<E> {
     LinkedListNode<E> head;
 
     void add(E data) {
@@ -110,8 +91,8 @@ class LinkedList<E> {
             size--;
         }
 
-        while (last != null){
-            last=last.next;
+        while (last != null) {
+            last = last.next;
             head = head.next;
         }
 
@@ -130,8 +111,7 @@ class LinkedList<E> {
         return size;
     }
 
-    public void deleteInteriorNodesWhithoutAccessingAncestors(LinkedListNode<E> node)
-    {
+    public void deleteInteriorNodesWhithoutAccessingAncestors(LinkedListNode<E> node) {
         if (node == null || node.next == null)
             return;
         node.data = node.next.data;
