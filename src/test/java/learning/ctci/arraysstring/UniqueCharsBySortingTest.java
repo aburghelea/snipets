@@ -1,8 +1,6 @@
-package learning.ctci.ArraysAndStrings;
+package learning.ctci.arraysstring;
 
 import junit.framework.Assert;
-import org.junit.After;
-import org.junit.Before;
 
 /**
  * @author aburghelea

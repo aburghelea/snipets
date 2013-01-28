@@ -1,4 +1,4 @@
-package learning.ctci.ArraysAndStrings;
+package learning.ctci.arraysstring;
 
 
 import org.junit.Test;
