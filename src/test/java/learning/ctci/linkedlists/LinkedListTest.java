@@ -107,4 +107,43 @@ public class LinkedListTest {
 
         Assert.assertEquals("Lista are un element", "unu;", list.toString());
     }
+
+    @Test
+    public void testNthElementWhereListHasNElements() throws Exception {
+        list.add("unu");
+        list.add("doi");
+        list.add("trei");
+
+        Assert.assertEquals("Element incorect", "trei", list.nthLastElements(3).toString());
+    }
+
+    @Test
+    public void testNthElementWhereListHasMoreThanNElements() throws Exception {
+        list.add("unu");
+        list.add("doi");
+        list.add("trei");
+        list.add("patru");
+
+        Assert.assertEquals("Element incorect", "trei", list.nthLastElements(3).toString());
+    }
+
+    @Test
+    public void testNthElementWhereListLessThanThanNElements() throws Exception {
+        list.add("unu");
+        list.add("doi");
+        list.add("trei");
+
+        Assert.assertNull("Should have failed", list.nthLastElements(4));
+    }
+
+    @Test
+    public void testRemoveInnerElements() throws Exception {
+        list.add("unu");
+        LinkedListNode<String> interiorNode = list.addAndReturn("doi");
+        list.add("trei");
+        list.add("patru");
+        list.deleteInteriorNodesWhithoutAccessingAncestors(interiorNode);
+
+        Assert.assertEquals("Nu s-a sters nodul doi", "patru -> trei -> unu;", list.toString());
+    }
 }

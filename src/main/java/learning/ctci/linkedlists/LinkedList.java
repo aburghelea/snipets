@@ -37,6 +37,11 @@ class LinkedList<E> {
         }
     }
 
+    LinkedListNode<E> addAndReturn(E data) {
+        add(data);
+        return head;
+    }
+
     public String toString() {
         if (head == null)
             return "";
@@ -51,11 +56,11 @@ class LinkedList<E> {
         return sb.toString();
     }
 
-    public void removeDuplicates(){
+    public void removeDuplicates() {
         HashSet<E> previousApparences = new HashSet<>();
         LinkedListNode<E> previous = null;
         LinkedListNode<E> head = this.head;
-        while(head != null){
+        while (head != null) {
             if (previousApparences.contains(head.data))
                 previous.next = head.next;
             else {
@@ -66,7 +71,7 @@ class LinkedList<E> {
         }
     }
 
-    public void removeDuplicatesSlowly(){
+    public void removeDuplicatesSlowly() {
         if (head == null || head.next == null)
             return;
         LinkedListNode<E> current = head.next;
@@ -92,6 +97,45 @@ class LinkedList<E> {
         }
 
         return false;
+    }
+
+    public LinkedListNode<E> nthLastElements(int size) {
+        if (this.size() < size)
+            return null;
+
+        LinkedListNode<E> head = this.head, last = this.head;
+
+        while (size > 0) {
+            last = last.next;
+            size--;
+        }
+
+        while (last != null){
+            last=last.next;
+            head = head.next;
+        }
+
+        return head;
+    }
+
+    private int size() {
+        int size = 0;
+        LinkedListNode<E> head = this.head;
+
+        while (head != null) {
+            size++;
+            head = head.next;
+        }
+
+        return size;
+    }
+
+    public void deleteInteriorNodesWhithoutAccessingAncestors(LinkedListNode<E> node)
+    {
+        if (node == null || node.next == null)
+            return;
+        node.data = node.next.data;
+        node.next = node.next.next;
     }
 }
 
