@@ -43,23 +43,24 @@ public class LinkedListTest {
     }
 
     @Test
-    public void testDuplicatesEmptyList() throws Exception {
+    public void testRemoveDuplicatesEmptyList() throws Exception {
         list.removeDuplicates();
         Assert.assertEquals("Lista ar trebui sa fie goala", "", list.toString());
     }
 
     @Test
-    public void testDuplicatesListWithOneElement() throws Exception {
+    public void testRemoveDuplicatesListWithOneElement() throws Exception {
         list.add("unu");
         list.removeDuplicates();
         Assert.assertEquals("Lista nu avea duplicate", "unu;", list.toString());
     }
 
     @Test
-    public void testDuplicatesListWithMultipleElements() throws Exception {
+    public void testRemoveDuplicatesListWithMultipleElements() throws Exception {
         list.add("unu");
         list.add("doi");
         list.add("trei");
+        list.removeDuplicates();
         Assert.assertEquals("Lista nu ar trebui sa aibe duplicate", "trei -> doi -> unu;", list.toString());
     }
 
@@ -70,6 +71,39 @@ public class LinkedListTest {
         list.add("unu");
         list.add("unu");
         list.removeDuplicates();
+
+        Assert.assertEquals("Lista are un element", "unu;", list.toString());
+    }
+
+    @Test
+    public void testRemoveDuplicatesSlowlyEmptyList() throws Exception {
+        list.removeDuplicatesSlowly();
+        Assert.assertEquals("Lista ar trebui sa fie goala", "", list.toString());
+    }
+
+    @Test
+    public void testRemoveDuplicatesSlowlyListWithOneElement() throws Exception {
+        list.add("unu");
+        list.removeDuplicatesSlowly();
+        Assert.assertEquals("Lista nu avea duplicate", "unu;", list.toString());
+    }
+
+    @Test
+    public void testRemoveDuplicatesSlowlyListWithMultipleElements() throws Exception {
+        list.add("unu");
+        list.add("doi");
+        list.add("trei");
+        list.removeDuplicatesSlowly();
+        Assert.assertEquals("Lista nu ar trebui sa aibe duplicate", "trei -> doi -> unu;", list.toString());
+    }
+
+    @Test
+    public void testRemoveDuplicatesSlowlyFromListWithAllElements() throws Exception {
+        list.add("unu");
+        list.add("unu");
+        list.add("unu");
+        list.add("unu");
+        list.removeDuplicatesSlowly();
 
         Assert.assertEquals("Lista are un element", "unu;", list.toString());
     }

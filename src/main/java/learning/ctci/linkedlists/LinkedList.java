@@ -1,7 +1,6 @@
 package learning.ctci.linkedlists;
 
 import java.util.HashSet;
-import java.util.Hashtable;
 
 /**
  * @author aburghelea
@@ -65,7 +64,34 @@ class LinkedList<E> {
             }
             head = head.next;
         }
+    }
 
+    public void removeDuplicatesSlowly(){
+        if (head == null || head.next == null)
+            return;
+        LinkedListNode<E> current = head.next;
+        LinkedListNode<E> previous = head;
+        while (current != null) {
+            if (previousEncountered(current)) {
+                previous.next = current.next;
+            } else {
+                previous = head;
+            }
+            current = current.next;
+        }
+    }
+
+    private boolean previousEncountered(LinkedListNode<E> current) {
+        LinkedListNode<E> head = this.head;
+
+        while (head != null && !head.equals(current)) {
+            if (head.data.equals(current.data))
+                return true;
+
+            head = head.next;
+        }
+
+        return false;
     }
 }
 
