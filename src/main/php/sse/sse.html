@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+
+    </title>
+    <script type="text/javascript">
+        function init() {
+            source = new EventSource('sse.php');
+            source.addEventListener('message', function (e) {
+//                var e.datadata = JSON.parse(e.data);
+                console.log(e.data);
+            }, false);
+
+        }
+    </script>
+</head>
+<body onload="init()">
+
+</body>
+</html>
