@@ -24,7 +24,7 @@ public class URLReader {
 
     public static void main(String[] args) {
         URLReader urlReader = new URLReader();
-        List<String> lines = urlReader.start("buff");
+        List<String> lines = urlReader.start("House");
 
         for (String line : lines) {
             System.out.println(line);

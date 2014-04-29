@@ -16,13 +16,17 @@ public class FrameWithAdapter {
     public static void main(String[] args) {
         JFrame mainWindow = new JFrame("Main");
         JButton opener = new JButton("Open new window");
-
+        for (int i = 0 ; i < 10; i++) {
+            JButton button = new JButton(String.valueOf(i));
+            mainWindow.add(button);
+        }
         mainWindow.add(opener);
         mainWindow.setLayout(new FlowLayout());
         mainWindow.pack();
         mainWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+//        mainWindow.setVisible(true);
         mainWindow.setVisible(true);
-
+//
         final JFrame frame = new JFrame("Test");
         opener.addActionListener(new ActionListener() {
             @Override
