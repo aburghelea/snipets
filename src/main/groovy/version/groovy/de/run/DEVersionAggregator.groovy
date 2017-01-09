@@ -27,6 +27,7 @@ class DEVersionAggregator {
                 clients.findAll {
                     it.active
                 }.collect({
+                    try {
                     [(CLIENT): it.name] << HTTP_BUILDER.request("$URL_PREFIX${it.name}$URL_SUFFIX", GET, TEXT) {
                         response.success = {
                             ignore, statusReader ->
@@ -35,6 +36,8 @@ class DEVersionAggregator {
                                     [(tokens[0].contains(ABBREV) ? SHA : TAG): tokens[1]]
                                 })
                         }
+                    }} catch (Exception e) {
+                        [(CLIENT):name] << ["Connection" : "refused"];
                     }
                 })
             }
@@ -49,9 +52,9 @@ class DEVersionAggregator {
 }
 
 interface Constants {
-    static final CLIENTS_CONFIGURATION_URL = 'config api clients json url'
-    static final URL_PREFIX = 'de suffix'
-    static final URL_SUFFIX = 'de status preffix'
+    static final CLIENTS_CONFIGURATION_URL = 'http://configuration-api.adserver.adswizz.com:8080/clients'
+    static final URL_PREFIX = 'http://'
+    static final URL_SUFFIX = '.adswizz.com/getStatus'
     static final GIT_COMMIT = "git.commit"
     static final String ABBREV = 'abbrev'
     static final String SHA = 'sha'
